@@ -19,3 +19,9 @@ jobs:
 
       - name: Print Hello
         run: echo "hello world!"
+  test-job1:
+    runs-on: ubuntu-latest
+    needs: test-job
+    steps:
+      - name: Print Hello
+        run: echo "hello world! welcome to git hub worlflow for begginers"
