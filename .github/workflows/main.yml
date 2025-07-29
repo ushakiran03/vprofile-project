@@ -1,11 +1,21 @@
-name : Sample trigger pipeline
-on: workflow_dispatch
-Jobs: Testing job
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+name: Sample trigger pipeline
 
-    - name: Set up Java
-      uses: actions/setup-java@v3
-      run : echo "hello world!"
+on:
+  workflow_dispatch:
+
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Print Hello
+        run: echo "hello world!"
